@@ -1,6 +1,7 @@
 <template>
   <div :class='$style.container'>
-    <h1 :class='$style.title'>IM A SEPARATE COMPONENT COMMUNICATING VIA VUEX</h1>
+    <h1 :class='$style.title'>IM A SEPARATE COMPONENT COMMUNICATING VIA VUEX!</h1>
+
     <button @click='decrement'>DECREMENT</button>
     <button @click='increment'>INCREMENT</button>
   </div>

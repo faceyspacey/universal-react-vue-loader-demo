@@ -1,8 +1,8 @@
 <template>
   <div :class='$style.container'>
     <div>
-      Fade In: <input type="range" v-model="fadeInDuration" min="0" v-bind:max="maxFadeDuration">
-      Fade Out: <input type="range" v-model="fadeOutDuration" min="0" v-bind:max="maxFadeDuration">
+      Fade In: <input type="range" v-model.number="fadeInDuration" min="0" v-bind:max="maxFadeDuration">
+      Fade Out: <input type="range" v-model.number="fadeOutDuration" min="0" v-bind:max="maxFadeDuration">
 
       <transition
         v-bind:css='false'
@@ -10,7 +10,7 @@
         v-on:enter='enter'
         v-on:leave='leave'
       >
-        <p v-if='show' :class='$style.looper'>IM A LOOPING {{transitionText}}</p>
+        <p v-if='show' :class='$style.looper'>{{transitionText}}</p>
       </transition>
 
       <button
@@ -34,8 +34,13 @@ export default {
       stop: true,
       fadeInDuration: 2000,
       fadeOutDuration: 500,
-      maxFadeDuration: 5000,
-      transitionText: '<TRANSITION />'
+      maxFadeDuration: 5000
+    }
+  },
+  computed: {
+    transitionText() {
+      const ms = this.fadeInDuration + this.fadeOutDuration
+      return `IM A ${ms}ms LOOPING <TRANSITION />`
     }
   },
   methods: {

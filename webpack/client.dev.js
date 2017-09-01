@@ -4,8 +4,8 @@ const WriteFilePlugin = require('write-file-webpack-plugin') // here so you can 
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin')
 const AutoDllPlugin = require('autodll-webpack-plugin')
 
-const extractVue = new ExtractCssChunks()
-const extractImported = new ExtractCssChunks()
+const extractCssVue = new ExtractCssChunks()
+const extractCssReact = new ExtractCssChunks()
 
 module.exports = {
   name: 'client',
@@ -34,7 +34,7 @@ module.exports = {
         loader: 'react-vue-loader',
         options: {
           loaders: {
-            stylus: extractVue.extract({
+            stylus: extractCssVue.extract({
               use: 'css-loader!stylus-loader',
               fallback: 'vue-style-loader'
             })
@@ -47,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.styl$/,
-        use: extractImported.extract({
+        use: extractCssReact.extract({
           use: [
             {
               loader: 'css-loader',
@@ -69,8 +69,8 @@ module.exports = {
   },
   plugins: [
     new WriteFilePlugin(),
-    extractVue,
-    extractImported,
+    extractCssVue,
+    extractCssReact,
     new webpack.optimize.CommonsChunkPlugin({
       names: ['bootstrap'], // needed to put webpack bootstrap code before chunks
       filename: '[name].js',
@@ -88,7 +88,7 @@ module.exports = {
       context: path.join(__dirname, '..'),
       filename: '[name].js',
       entry: {
-        vendor: ['react', 'react-dom', 'react-vue']
+        vendor: ['react', 'react-dom', 'react-vue', 'react-vue-helper']
       }
     })
   ]

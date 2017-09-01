@@ -1,7 +1,7 @@
 # Universal react-vue-loader Demo
 
 ![Universal react-vue-loader Demo tour](./tour.gif)
-> [watch complete tour & explanation on Youtube](https://youtube.com?v=123)
+> 🎥 **[watch complete tour & explanation on Youtube](https://www.youtube.com/watch?v=Ie30Vi0ZnJk)**
 
 ## Installation
 

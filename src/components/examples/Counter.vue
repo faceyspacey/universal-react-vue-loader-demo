@@ -1,9 +1,9 @@
 <template>
   <div :class='$style.container'>
     <div>
-      <h1>THIS IS AN SFC MADE /W VUE</h1>
+      <h1>THIS IS AN SFWC MADE /W VUE</h1>
       <span>{{count}}</span>
-      
+
       <button @click='count--'>DECREMENT</button>
       <button @click='count++'>INCREMENT</button>
     </div>

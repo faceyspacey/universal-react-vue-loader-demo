@@ -5,7 +5,7 @@ import UsageHero from './UsageHero'
 import Loading from './Loading'
 import NotFound from './NotFound'
 import { examples, nextIndex, indexFromPath } from '../utils'
-import createStore from '../createVuexStore'
+import VuexCommunicator from './VuexCommunicator'
 
 const UniversalComponent = universal(
   props => import(`./examples/${props.example}`),
@@ -43,31 +43,10 @@ export default class App extends React.Component {
 
         <p>*view the source in Chrome to verify universal code-splitting</p>
 
-        {example === 'Vuex' &&
-          <div className={styles.fromReact}>
-            <div>
-              vuex state in react: {this.count()}
-            </div>
-            <button onClick={this.divide}>DIVIDE BY 2 FROM REACT</button>
-          </div>}
+        {example === 'Vuex' && <VuexCommunicator />}
       </div>
     )
   }
-
-  // Vuex in React!
-
-  divide = () => {
-    this.vuexStore.dispatch('divide', 2)
-  }
-  count() {
-    return this.vuexStore ? this.vuexStore.state.count : 0
-  }
-  componentDidMount() {
-    this.vuexStore = createStore()
-    this.vuexStore.subscribe(() => this.forceUpdate())
-  }
-
-  // standard stuff
 
   constructor(props) {
     super(props)

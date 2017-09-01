@@ -1,7 +1,7 @@
 <template>
   <div :class='$style.container'>
     <div>
-      <h1>Grocery List</h1>
+      <h1>Grocery List!</h1>
       <input v-model='newItem' placeholder='add a new item' />
       <input type='button' value='add' @click='add' />
 

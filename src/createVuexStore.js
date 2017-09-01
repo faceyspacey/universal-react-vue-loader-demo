@@ -51,11 +51,4 @@ const getters = {
 let _store
 
 export default () =>
-  (_store =
-    _store ||
-    new Vuex.Store({
-      state,
-      getters,
-      actions,
-      mutations
-    }))
+  (_store = _store || new Vuex.Store({ state, getters, actions, mutations }))
